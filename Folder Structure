@@ -1,0 +1,14 @@
+shoe-3d-base/
+├─ index.html
+├─ package.json
+├─ postcss.config.cjs
+├─ tailwind.config.cjs
+├─ vite.config.js
+├─ README.md
+├─ public/
+│   └─ models/
+│       └─ rtfkt_creator_one.glb
+└─ src/
+    ├─ main.jsx
+    ├─ App.jsx
+    └─ index.css
