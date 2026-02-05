@@ -6,8 +6,7 @@ shoe-3d-base/
 ├─ vite.config.js
 ├─ README.md
 ├─ public/
-│   └─ models/
-│       └─ rtfkt_creator_one.glb
+│   └─ ofl0teWSYkR6upWkY6VyX_model.glb
 └─ src/
     ├─ main.jsx
     ├─ App.jsx
