@@ -54,7 +54,7 @@ function Ground({ variant }) {
     <mesh
       ref={ref}
       rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -0.55, 0]}
+      position={[0, -0.5, 0]}
       receiveShadow
     >
       <planeGeometry args={[10, 10]} />
@@ -67,14 +67,18 @@ function Ground({ variant }) {
 function Environment({ variant }) {
   return (
     <>
-      <fogExp2 args={["#0b0b0c", 0.035]} />
+      <fogExp2 args={["#0b0b0c", 0.03]} />
       <mesh scale={50}>
         <sphereGeometry args={[1, 64, 64]} />
         <meshStandardMaterial
           side={THREE.BackSide}
           color="#0f0f12"
           emissive="#1a1a1f"
-          emissiveIntensity={THREE.MathUtils.lerp(0.18, 0.28, 1 - variant.luminance)}
+          emissiveIntensity={THREE.MathUtils.lerp(
+            0.18,
+            0.28,
+            1 - variant.luminance
+          )}
           roughness={1}
         />
       </mesh>
@@ -102,9 +106,8 @@ function Shoe({ variantIndex, setVariantIndex }) {
       }
     });
 
-    scene.scale.set(1.35, 1.35, 1.35);
-    scene.position.set(0, -0.55, 0);
-    scene.rotation.y = 0;
+    scene.scale.set(1.15, 1.15, 1.15);
+    scene.position.set(0, -0.45, 0);
 
     return arr;
   }, [scene]);
@@ -136,7 +139,7 @@ function Shoe({ variantIndex, setVariantIndex }) {
       </group>
 
       <ContactShadows
-        position={[0, -0.55, 0]}
+        position={[0, -0.5, 0]}
         opacity={0.4}
         width={6}
         height={6}
@@ -146,7 +149,7 @@ function Shoe({ variantIndex, setVariantIndex }) {
 
       <Html
         center
-        position={[0, -1.25, 0]}
+        position={[0, -1.1, 0]}
         style={{
           color: "#e6e6e6",
           fontSize: "14px",
@@ -177,13 +180,13 @@ export default function App() {
         shadows
         dpr={[1, 1.5]}
         camera={{
-          position: [5.2, 3.1, 8.2],
-          fov: 45,
+          position: [0, 0.9, 6.2],
+          fov: 42,
           near: 0.1,
           far: 100,
         }}
       >
-        <ambientLight intensity={0.25} />
+        <ambientLight intensity={0.3} />
         <directionalLight position={[5, 6, 5]} intensity={1} castShadow />
         <directionalLight position={[-5, 2, -5]} intensity={0.6} />
 
@@ -199,8 +202,8 @@ export default function App() {
           enablePan={false}
           enableDamping
           dampingFactor={0.12}
-          minDistance={5.2}
-          maxDistance={9}
+          minDistance={5.8}
+          maxDistance={8.8}
         />
       </Canvas>
     </div>
