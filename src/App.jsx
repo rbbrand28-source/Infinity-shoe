@@ -134,7 +134,7 @@ const [textVisible, setTextVisible] = useState(true);
 const [hasInteracted, setHasInteracted] = useState(false);
 
 // Load GLTF shoe model
-const { scene } = useGLTF("/models/rtfkt_creator_one.glb", true);
+const { scene } = useGLTF("/models/ofl0teWSYkR6upWkY6VyX_model.glb", true);
 
 // Memoize materials for performance
 const meshes = useMemo(() => {
