@@ -54,7 +54,7 @@ function Ground({ variant }) {
     <mesh
       ref={ref}
       rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -0.5, 0]}
+      position={[0, -0.45, 0]}
       receiveShadow
     >
       <planeGeometry args={[10, 10]} />
@@ -106,8 +106,10 @@ function Shoe({ variantIndex, setVariantIndex }) {
       }
     });
 
-    scene.scale.set(1.15, 1.15, 1.15);
+    // 🔥 CINEMATIC SCALE (RESTORED)
+    scene.scale.set(2, 2, 2);
     scene.position.set(0, -0.45, 0);
+    scene.rotation.y = 0;
 
     return arr;
   }, [scene]);
@@ -139,7 +141,7 @@ function Shoe({ variantIndex, setVariantIndex }) {
       </group>
 
       <ContactShadows
-        position={[0, -0.5, 0]}
+        position={[0, -0.45, 0]}
         opacity={0.4}
         width={6}
         height={6}
@@ -149,7 +151,7 @@ function Shoe({ variantIndex, setVariantIndex }) {
 
       <Html
         center
-        position={[0, -1.1, 0]}
+        position={[0, window.innerWidth < 768 ? -0.9 : -1.15, 0]}
         style={{
           color: "#e6e6e6",
           fontSize: "14px",
@@ -173,6 +175,7 @@ function Shoe({ variantIndex, setVariantIndex }) {
 /* -------------------- APP ROOT -------------------- */
 export default function App() {
   const [variantIndex, setVariantIndex] = useState(0);
+  const isMobile = window.innerWidth < 768;
 
   return (
     <div className="w-screen h-screen bg-black overflow-hidden">
@@ -180,13 +183,15 @@ export default function App() {
         shadows
         dpr={[1, 1.5]}
         camera={{
-          position: [0, 0.9, 6.2],
-          fov: 42,
+          fov: isMobile ? 52 : 45,
+          position: isMobile
+            ? [2.6, 1.6, 5.8] // 📱 mobile fix
+            : [3.2, 1.9, 4.6], // 🖥 desktop cinematic
           near: 0.1,
           far: 100,
         }}
       >
-        <ambientLight intensity={0.3} />
+        <ambientLight intensity={0.25} />
         <directionalLight position={[5, 6, 5]} intensity={1} castShadow />
         <directionalLight position={[-5, 2, -5]} intensity={0.6} />
 
@@ -202,8 +207,8 @@ export default function App() {
           enablePan={false}
           enableDamping
           dampingFactor={0.12}
-          minDistance={5.8}
-          maxDistance={8.8}
+          minDistance={isMobile ? 4.8 : 3.5}
+          maxDistance={isMobile ? 7.2 : 6}
         />
       </Canvas>
     </div>
