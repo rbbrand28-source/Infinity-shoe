@@ -102,7 +102,7 @@ function Shoe({ variantIndex, setVariantIndex }) {
       }
     });
 
-    scene.scale.set(1.6, 1.6, 1.6);
+    scene.scale.set(1.35, 1.35, 1.35);
     scene.position.set(0, -0.55, 0);
     scene.rotation.y = 0;
 
@@ -177,8 +177,8 @@ export default function App() {
         shadows
         dpr={[1, 1.5]}
         camera={{
-          position: [4.2, 2.4, 6.5],
-          fov: 42,
+          position: [5.2, 3.1, 8.2],
+          fov: 45,
           near: 0.1,
           far: 100,
         }}
@@ -199,8 +199,8 @@ export default function App() {
           enablePan={false}
           enableDamping
           dampingFactor={0.12}
-          minDistance={4.8}
-          maxDistance={7}
+          minDistance={5.2}
+          maxDistance={9}
         />
       </Canvas>
     </div>
